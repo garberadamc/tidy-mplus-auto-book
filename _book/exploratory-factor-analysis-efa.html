@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Exploratory Factor Analysis (EFA) | Tidy Workflow with MplusAutomation</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.22.2 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Exploratory Factor Analysis (EFA) | Tidy Workflow with MplusAutomation" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Exploratory Factor Analysis (EFA) | Tidy Workflow with MplusAutomation" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Adam Garber" />
+
+
+<meta name="date" content="2021-05-18" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="run-a-simple-model-with-mplusautomation.html"/>
+<link rel="next" href="splits-iterators.html"/>
+<script src="libs/header-attrs-2.8.1/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Tidy Workflow with MplusAutomation</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#guidlines"><i class="fa fa-check"></i><b>2.1</b> Guidlines</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#preparing-to-work-with-mplusautomation"><i class="fa fa-check"></i><b>2.2</b> Preparing to work with MplusAutomation</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#tools-we-will-use-in-lab"><i class="fa fa-check"></i><b>2.3</b> Tools we will use in lab</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#creating-an-r-project"><i class="fa fa-check"></i><b>2.4</b> Creating an R-Project</a></li>
+<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#install-the-rhdf5-package-to-read-gh5-files"><i class="fa fa-check"></i><b>2.5</b> install the “rhdf5” package to read gh5 files</a></li>
+<li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#load-packages"><i class="fa fa-check"></i><b>2.6</b> load packages</a></li>
+<li class="chapter" data-level="2.7" data-path="intro.html"><a href="intro.html#keyboard-shortcuts"><i class="fa fa-check"></i><b>2.7</b> Keyboard shortcuts</a></li>
+<li class="chapter" data-level="2.8" data-path="intro.html"><a href="intro.html#read-in-data"><i class="fa fa-check"></i><b>2.8</b> Read in data</a></li>
+<li class="chapter" data-level="2.9" data-path="intro.html"><a href="intro.html#view-dataframe-with-labels-response-scale-meta-data"><i class="fa fa-check"></i><b>2.9</b> View dataframe with labels &amp; response scale meta-data</a></li>
+<li class="chapter" data-level="2.10" data-path="intro.html"><a href="intro.html#types-of-data-for-different-tasks"><i class="fa fa-check"></i><b>2.10</b> Types of data for different tasks</a></li>
+<li class="chapter" data-level="2.11" data-path="intro.html"><a href="intro.html#writing-reading-and-converting-data-between-3-formats"><i class="fa fa-check"></i><b>2.11</b> Writing, reading, and converting data between 3 formats</a></li>
+<li class="chapter" data-level="2.12" data-path="intro.html"><a href="intro.html#preparing-column-names-to-be-mplusautomation-ready"><i class="fa fa-check"></i><b>2.12</b> Preparing column-names to be <code>MplusAutomation</code> ready</a></li>
+<li class="chapter" data-level="2.13" data-path="intro.html"><a href="intro.html#renaming-columns-manually"><i class="fa fa-check"></i><b>2.13</b> Renaming columns manually…</a></li>
+<li class="chapter" data-level="2.14" data-path="intro.html"><a href="intro.html#what-do-you-do-if-you-have-a-large-dataset-with-many-column-names-that-are-8-characters"><i class="fa fa-check"></i><b>2.14</b> What do you do if you have a large dataset with many column names that are &gt; 8 characters?</a></li>
+<li class="chapter" data-level="2.15" data-path="intro.html"><a href="intro.html#a-note-on-coding-style"><i class="fa fa-check"></i><b>2.15</b> A note on coding style:</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="run-a-simple-model-with-mplusautomation.html"><a href="run-a-simple-model-with-mplusautomation.html"><i class="fa fa-check"></i><b>3</b> Run a Simple Model with <code>MplusAutomation</code></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="run-a-simple-model-with-mplusautomation.html"><a href="run-a-simple-model-with-mplusautomation.html#a-minimal-example-of-writing-running-reading-models"><i class="fa fa-check"></i><b>3.1</b> A minimal example of writing, running, &amp; reading models</a></li>
+<li class="chapter" data-level="3.2" data-path="run-a-simple-model-with-mplusautomation.html"><a href="run-a-simple-model-with-mplusautomation.html#practice-using-mplusobject-method-type-basic"><i class="fa fa-check"></i><b>3.2</b> PRACTICE: Using MplusObject() method (<code>type = BASIC;</code>)</a></li>
+<li class="chapter" data-level="3.3" data-path="run-a-simple-model-with-mplusautomation.html"><a href="run-a-simple-model-with-mplusautomation.html#practice-subsetting-now-explore-descriptives-for-observations-that-reported-as-female"><i class="fa fa-check"></i><b>3.3</b> PRACTICE SUBSETTING: Now explore descriptives for observations that reported as “female”</a></li>
+<li class="chapter" data-level="3.4" data-path="run-a-simple-model-with-mplusautomation.html"><a href="run-a-simple-model-with-mplusautomation.html#practice-exploratory-factor-analysis-efa"><i class="fa fa-check"></i><b>3.4</b> PRACTICE: Exploratory Factor Analysis (EFA)</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="exploratory-factor-analysis-efa.html"><a href="exploratory-factor-analysis-efa.html"><i class="fa fa-check"></i><b>4</b> Exploratory Factor Analysis (EFA)</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="exploratory-factor-analysis-efa.html"><a href="exploratory-factor-analysis-efa.html#preparation"><i class="fa fa-check"></i><b>4.1</b> Preparation</a></li>
+<li class="chapter" data-level="4.2" data-path="exploratory-factor-analysis-efa.html"><a href="exploratory-factor-analysis-efa.html#loading-packages"><i class="fa fa-check"></i><b>4.2</b> Loading packages</a></li>
+<li class="chapter" data-level="4.3" data-path="exploratory-factor-analysis-efa.html"><a href="exploratory-factor-analysis-efa.html#exercise-1-read-in-data-to-r-environment"><i class="fa fa-check"></i><b>4.3</b> EXERCISE 1: READ IN DATA TO R ENVIRONMENT</a></li>
+<li class="chapter" data-level="4.4" data-path="exploratory-factor-analysis-efa.html"><a href="exploratory-factor-analysis-efa.html#exercise-2-subset"><i class="fa fa-check"></i><b>4.4</b> EXERCISE 2: SUBSET</a></li>
+<li class="chapter" data-level="4.5" data-path="exploratory-factor-analysis-efa.html"><a href="exploratory-factor-analysis-efa.html#exercise-4-reverse-code"><i class="fa fa-check"></i><b>4.5</b> EXERCISE 4: REVERSE CODE</a></li>
+<li class="chapter" data-level="4.6" data-path="exploratory-factor-analysis-efa.html"><a href="exploratory-factor-analysis-efa.html#exercise-5-check-correlations"><i class="fa fa-check"></i><b>4.6</b> EXERCISE 5: CHECK CORRELATIONS</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="exploratory-factor-analysis-efa.html"><a href="exploratory-factor-analysis-efa.html#check-correlations-to-see-if-coding-was-correct-all-blue-no-red"><i class="fa fa-check"></i><b>4.6.1</b> check correlations to see if coding was correct (all blue, no red)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="exploratory-factor-analysis-efa.html"><a href="exploratory-factor-analysis-efa.html#exercise-6-prepare-datasets"><i class="fa fa-check"></i><b>4.7</b> EXERCISE 6: PREPARE DATASETS</a></li>
+<li class="chapter" data-level="4.8" data-path="exploratory-factor-analysis-efa.html"><a href="exploratory-factor-analysis-efa.html#exercise-7-mplus-automation---get-descriptives"><i class="fa fa-check"></i><b>4.8</b> EXERCISE 7: MPLUS AUTOMATION - GET DESCRIPTIVES</a></li>
+<li class="chapter" data-level="4.9" data-path="exploratory-factor-analysis-efa.html"><a href="exploratory-factor-analysis-efa.html#exercise-8-exploratory-factor-analysis-efa"><i class="fa fa-check"></i><b>4.9</b> EXERCISE 8: EXPLORATORY FACTOR ANALYSIS (EFA)</a>
+<ul>
+<li class="chapter" data-level="4.9.1" data-path="exploratory-factor-analysis-efa.html"><a href="exploratory-factor-analysis-efa.html#exercise-9-efa-reduced-indicator-set"><i class="fa fa-check"></i><b>4.9.1</b> EXERCISE 9: EFA REDUCED INDICATOR SET</a></li>
+<li class="chapter" data-level="4.9.2" data-path="exploratory-factor-analysis-efa.html"><a href="exploratory-factor-analysis-efa.html#removed-items-loadings-.5-andor-cross-loadings"><i class="fa fa-check"></i><b>4.9.2</b> Removed items: (loadings &lt;.5 and/or cross-loadings)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="exploratory-factor-analysis-efa.html"><a href="exploratory-factor-analysis-efa.html#references"><i class="fa fa-check"></i><b>4.10</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="splits-iterators.html"><a href="splits-iterators.html"><i class="fa fa-check"></i><b>5</b> Splits &amp; Iterators</a>
+<ul>
+<li class="chapter" data-level="5.0.1" data-path="splits-iterators.html"><a href="splits-iterators.html#lab-4-outline"><i class="fa fa-check"></i><b>5.0.1</b> Lab 4 outline</a></li>
+<li class="chapter" data-level="5.0.2" data-path="splits-iterators.html"><a href="splits-iterators.html#getting-started---following-the-routine"><i class="fa fa-check"></i><b>5.0.2</b> Getting started - following the routine…</a></li>
+<li class="chapter" data-level="5.0.3" data-path="splits-iterators.html"><a href="splits-iterators.html#r-project-instructions"><i class="fa fa-check"></i><b>5.0.3</b> R-Project instructions:</a></li>
+<li class="chapter" data-level="5.1" data-path="splits-iterators.html"><a href="splits-iterators.html#begin"><i class="fa fa-check"></i><b>5.1</b> Begin</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="splits-iterators.html"><a href="splits-iterators.html#loading-packages-1"><i class="fa fa-check"></i><b>5.1.1</b> loading packages…</a></li>
+<li class="chapter" data-level="5.1.2" data-path="splits-iterators.html"><a href="splits-iterators.html#read-in-the-raw-dataset"><i class="fa fa-check"></i><b>5.1.2</b> read in the raw dataset</a></li>
+<li class="chapter" data-level="5.1.3" data-path="splits-iterators.html"><a href="splits-iterators.html#create-a-subset-of-the-dataset-called-school_trouble"><i class="fa fa-check"></i><b>5.1.3</b> create a subset of the dataset called <code>school_trouble</code></a></li>
+<li class="chapter" data-level="5.1.4" data-path="splits-iterators.html"><a href="splits-iterators.html#make-a-new-codebook-from-the-school_trouble-subset"><i class="fa fa-check"></i><b>5.1.4</b> make a new codebook from the <code>school_trouble</code> subset</a></li>
+<li class="chapter" data-level="5.1.5" data-path="splits-iterators.html"><a href="splits-iterators.html#write-a-csv-datafile"><i class="fa fa-check"></i><b>5.1.5</b> write a <code>CSV</code> datafile</a></li>
+<li class="chapter" data-level="5.1.6" data-path="splits-iterators.html"><a href="splits-iterators.html#read-the-unlabeled-data-back-into-r"><i class="fa fa-check"></i><b>5.1.6</b> read the unlabeled data back into R</a></li>
+<li class="chapter" data-level="5.1.7" data-path="splits-iterators.html"><a href="splits-iterators.html#check-items-to-see-if-reverse-coding-is-needed"><i class="fa fa-check"></i><b>5.1.7</b> check items to see if reverse coding is needed</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="section.html"><a href="section.html"><i class="fa fa-check"></i><b>6</b> </a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="section.html"><a href="section.html#randomly-split-a-sample-into-2-equal-parts"><i class="fa fa-check"></i><b>6.1</b> Randomly split a sample into 2 equal parts</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="section-1.html"><a href="section-1.html"><i class="fa fa-check"></i><b>7</b> </a>
+<ul>
+<li class="chapter" data-level="7.0.1" data-path="section-1.html"><a href="section-1.html#find-the-size-of-half-of-original-sample."><i class="fa fa-check"></i><b>7.0.1</b> find the size of half of original sample.</a></li>
+<li class="chapter" data-level="7.0.2" data-path="section-1.html"><a href="section-1.html#the-floor-function-helps-with-rounding"><i class="fa fa-check"></i><b>7.0.2</b> The “floor()” function helps with rounding</a></li>
+<li class="chapter" data-level="7.0.3" data-path="section-1.html"><a href="section-1.html#set-the-seed-to-make-your-partition-reproducible"><i class="fa fa-check"></i><b>7.0.3</b> set the seed to make your partition reproducible</a></li>
+<li class="chapter" data-level="7.0.4" data-path="section-1.html"><a href="section-1.html#the-function-sample-will-pick-at-random-the-values-of-the-specified-number"><i class="fa fa-check"></i><b>7.0.4</b> the function <code>sample()</code> will pick at random the values of the specified number</a></li>
+<li class="chapter" data-level="7.0.5" data-path="section-1.html"><a href="section-1.html#create-two-samples-called-calibrate-validate"><i class="fa fa-check"></i><b>7.0.5</b> create two samples called “calibrate” &amp; “validate”</a></li>
+<li class="chapter" data-level="7.0.6" data-path="section-1.html"><a href="section-1.html#lets-run-an-efa-with-the-calibrate-sample"><i class="fa fa-check"></i><b>7.0.6</b> Let’s run an EFA with the “calibrate” sample</a></li>
+<li class="chapter" data-level="7.0.7" data-path="section-1.html"><a href="section-1.html#plot-parallel-analysis-eigenvalues"><i class="fa fa-check"></i><b>7.0.7</b> Plot Parallel Analysis &amp; Eigenvalues</a></li>
+<li class="chapter" data-level="7.0.8" data-path="section-1.html"><a href="section-1.html#read-into-r-an-mplus-output-file"><i class="fa fa-check"></i><b>7.0.8</b> read into R an Mplus output file</a></li>
+<li class="chapter" data-level="7.0.9" data-path="section-1.html"><a href="section-1.html#extract-relavent-data-prepare-dataframe-for-plot"><i class="fa fa-check"></i><b>7.0.9</b> extract relavent data &amp; prepare dataframe for plot</a></li>
+<li class="chapter" data-level="7.0.10" data-path="section-1.html"><a href="section-1.html#pivot-the-dataframe-to-long-format"><i class="fa fa-check"></i><b>7.0.10</b> pivot the dataframe to “long” format</a></li>
+<li class="chapter" data-level="7.0.11" data-path="section-1.html"><a href="section-1.html#plot-using-ggplot"><i class="fa fa-check"></i><b>7.0.11</b> plot using ggplot</a></li>
+<li class="chapter" data-level="7.0.12" data-path="section-1.html"><a href="section-1.html#save-figure-to-the-designated-folder"><i class="fa fa-check"></i><b>7.0.12</b> save figure to the designated folder</a></li>
+<li class="chapter" data-level="7.1" data-path="section-1.html"><a href="section-1.html#introduction-to-mplusautomation-with-iterators"><i class="fa fa-check"></i><b>7.1</b> Introduction to MplusAutomation with iterators</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="section-1.html"><a href="section-1.html#alternate-way-to-run-an-efa-with-the-calibrate-sample"><i class="fa fa-check"></i><b>7.1.1</b> Alternate way to run an EFA with the “calibrate” sample</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="section-1.html"><a href="section-1.html#cleaning-subsetting-large-datasets"><i class="fa fa-check"></i><b>7.2</b> Cleaning &amp; subsetting large datasets</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="section-1.html"><a href="section-1.html#reading-spss-files-is-a-lot-slower-than-reading-csv-formatted-files"><i class="fa fa-check"></i><b>7.2.1</b> reading SPSS files is a lot slower than reading CSV formatted files</a></li>
+<li class="chapter" data-level="7.2.2" data-path="section-1.html"><a href="section-1.html#make-all-column-names-lower_snake_case-style"><i class="fa fa-check"></i><b>7.2.2</b> make all column names “lower_snake_case” style</a></li>
+<li class="chapter" data-level="7.2.3" data-path="section-1.html"><a href="section-1.html#select-usig-the-starts_with-function"><i class="fa fa-check"></i><b>7.2.3</b> select usig the starts_with() function</a></li>
+<li class="chapter" data-level="7.2.4" data-path="section-1.html"><a href="section-1.html#select-using-the-end_with-function"><i class="fa fa-check"></i><b>7.2.4</b> select using the end_with() function</a></li>
+<li class="chapter" data-level="7.2.5" data-path="section-1.html"><a href="section-1.html#select-using-the-end_with-function-1"><i class="fa fa-check"></i><b>7.2.5</b> select using the end_with() function</a></li>
+<li class="chapter" data-level="7.2.6" data-path="section-1.html"><a href="section-1.html#combine-different-select-arguements"><i class="fa fa-check"></i><b>7.2.6</b> combine different select() arguements</a></li>
+<li class="chapter" data-level="7.2.7" data-path="section-1.html"><a href="section-1.html#remove-characters-from-the-variable-names-that-are-greater-than-8-characters"><i class="fa fa-check"></i><b>7.2.7</b> remove characters from the variable names that are greater than 8 characters</a></li>
+<li class="chapter" data-level="7.2.8" data-path="section-1.html"><a href="section-1.html#check-if-culumn-names-are-unique"><i class="fa fa-check"></i><b>7.2.8</b> check if culumn names are unique</a></li>
+<li class="chapter" data-level="7.2.9" data-path="section-1.html"><a href="section-1.html#locate-duplicates-this-will-find-the-column-of-the-first-duplicate"><i class="fa fa-check"></i><b>7.2.9</b> locate duplicates (this will find the column of the first duplicate)</a></li>
+<li class="chapter" data-level="7.2.10" data-path="section-1.html"><a href="section-1.html#other-functions-to-consider-from-the-stringr-package-part-of-tidyverse"><i class="fa fa-check"></i><b>7.2.10</b> Other functions to consider from the “stringr” package (part of tidyverse):</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="section-1.html"><a href="section-1.html#end-of-lab-4-exercise"><i class="fa fa-check"></i><b>7.3</b> End of lab 4 exercise</a></li>
+<li class="chapter" data-level="7.4" data-path="section-1.html"><a href="section-1.html#references-1"><i class="fa fa-check"></i><b>7.4</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>8</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references-2.html"><a href="references-2.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Tidy Workflow with MplusAutomation</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="exploratory-factor-analysis-efa" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Exploratory Factor Analysis (EFA)</h1>
+<hr />
+<p><img src="hex_package.png" width="65%" height="65%" /></p>
+<hr />
+<p>DATA SOURCE: This lab exercise utilizes the NCES public-use dataset: Education Longitudinal Study of 2002 (Lauff &amp; Ingels, 2014) <a href="https://nces.ed.gov/surveys/els2002/avail_data.asp"><span class="math inline">\(\color{blue}{\text{See website: nces.ed.gov}}\)</span></a></p>
+<hr />
+<div id="preparation" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Preparation</h2>
+<hr />
+<p>R-Project Instructions:</p>
+<ol style="list-style-type: decimal">
+<li>click “NEW PROJECT” (upper right corner of window)</li>
+<li>choose option “NEW DIRECTORY”</li>
+<li>choose location of project (on desktop OR in a designated class folder)</li>
+</ol>
+<p>Within R-studio under the Files pane (bottom right):</p>
+<ol style="list-style-type: decimal">
+<li>click “New Folder” and name folder “data”</li>
+<li>click “New Folder” and name folder “efa_mplus”</li>
+</ol>
+<hr />
+</div>
+<div id="loading-packages" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Loading packages</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="exploratory-factor-analysis-efa.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MplusAutomation)</span>
+<span id="cb14-2"><a href="exploratory-factor-analysis-efa.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb14-3"><a href="exploratory-factor-analysis-efa.html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rhdf5)</span>
+<span id="cb14-4"><a href="exploratory-factor-analysis-efa.html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb14-5"><a href="exploratory-factor-analysis-efa.html#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb14-6"><a href="exploratory-factor-analysis-efa.html#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
+<span id="cb14-7"><a href="exploratory-factor-analysis-efa.html#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span></code></pre></div>
+</div>
+<div id="exercise-1-read-in-data-to-r-environment" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> EXERCISE 1: READ IN DATA TO R ENVIRONMENT</h2>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="exploratory-factor-analysis-efa.html#cb15-1" aria-hidden="true" tabindex="-1"></a>lab_data <span class="ot">&lt;-</span> <span class="fu">read_spss</span>(<span class="st">&quot;https://garberadamc.github.io/project-site/data/els_sub1_spss.sav&quot;</span>)</span></code></pre></div>
+</div>
+<div id="exercise-2-subset" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> EXERCISE 2: SUBSET</h2>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="exploratory-factor-analysis-efa.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make a subset of all the student reported variables</span></span>
+<span id="cb16-2"><a href="exploratory-factor-analysis-efa.html#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="exploratory-factor-analysis-efa.html#cb16-3" aria-hidden="true" tabindex="-1"></a>by_student <span class="ot">&lt;-</span> lab_data <span class="sc">%&gt;%</span> </span>
+<span id="cb16-4"><a href="exploratory-factor-analysis-efa.html#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">22</span><span class="sc">:</span><span class="dv">145</span>)</span>
+<span id="cb16-5"><a href="exploratory-factor-analysis-efa.html#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="exploratory-factor-analysis-efa.html#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co"># make another subset (just the variables we will use for the EFA)</span></span>
+<span id="cb16-7"><a href="exploratory-factor-analysis-efa.html#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="exploratory-factor-analysis-efa.html#cb16-8" aria-hidden="true" tabindex="-1"></a>schl_safe <span class="ot">&lt;-</span> lab_data <span class="sc">%&gt;%</span> </span>
+<span id="cb16-9"><a href="exploratory-factor-analysis-efa.html#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb16-10"><a href="exploratory-factor-analysis-efa.html#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;BYS20A&quot;</span>, <span class="st">&quot;BYS20B&quot;</span>, <span class="st">&quot;BYS20C&quot;</span>, <span class="st">&quot;BYS20D&quot;</span>, <span class="st">&quot;BYS20E&quot;</span>, <span class="st">&quot;BYS20F&quot;</span>, <span class="st">&quot;BYS20G&quot;</span>, <span class="co"># F1</span></span>
+<span id="cb16-11"><a href="exploratory-factor-analysis-efa.html#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;BYS20H&quot;</span>, <span class="st">&quot;BYS20I&quot;</span>, <span class="st">&quot;BYS20J&quot;</span>, <span class="st">&quot;BYS20K&quot;</span>, <span class="st">&quot;BYS20L&quot;</span>, <span class="st">&quot;BYS20M&quot;</span>, <span class="st">&quot;BYS20N&quot;</span>, <span class="co"># F2</span></span>
+<span id="cb16-12"><a href="exploratory-factor-analysis-efa.html#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;BYS21A&quot;</span>, <span class="st">&quot;BYS21B&quot;</span>, <span class="st">&quot;BYS21C&quot;</span>, <span class="st">&quot;BYS21D&quot;</span>, <span class="st">&quot;BYS21E&quot;</span>, <span class="co"># F3</span></span>
+<span id="cb16-13"><a href="exploratory-factor-analysis-efa.html#cb16-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;BYSEX&quot;</span>, <span class="st">&quot;BYRACE&quot;</span>, <span class="st">&quot;BYSTLANG&quot;</span> <span class="co"># add some covariates or grouping variables</span></span>
+<span id="cb16-14"><a href="exploratory-factor-analysis-efa.html#cb16-14" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
+<hr />
+</div>
+<div id="exercise-4-reverse-code" class="section level2" number="4.5">
+<h2><span class="header-section-number">4.5</span> EXERCISE 4: REVERSE CODE</h2>
+<p>Reverse indicators so scale has consistent meaning for factor interpretation</p>
+<p><strong>Expected factors based on item wording:</strong></p>
+<ul>
+<li>Factor 1: “school climate,” higher values indicate postive school climate</li>
+<li>Factor 2: “safety,” higher values indicate safe school conditions</li>
+<li>Factor 3: “clear rules,” higher values indicate clear communication of rules</li>
+</ul>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="exploratory-factor-analysis-efa.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reverse code the following variables:</span></span>
+<span id="cb17-2"><a href="exploratory-factor-analysis-efa.html#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="exploratory-factor-analysis-efa.html#cb17-3" aria-hidden="true" tabindex="-1"></a>cols <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;BYS20A&quot;</span>, <span class="st">&quot;BYS20B&quot;</span>, <span class="st">&quot;BYS20C&quot;</span>, <span class="co"># FACTOR 1: school climate </span></span>
+<span id="cb17-4"><a href="exploratory-factor-analysis-efa.html#cb17-4" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;BYS20E&quot;</span>, <span class="st">&quot;BYS20F&quot;</span>, <span class="st">&quot;BYS20G&quot;</span>, </span>
+<span id="cb17-5"><a href="exploratory-factor-analysis-efa.html#cb17-5" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;BYS21A&quot;</span>, <span class="st">&quot;BYS21B&quot;</span>, <span class="st">&quot;BYS21C&quot;</span>, <span class="st">&quot;BYS21D&quot;</span>, <span class="st">&quot;BYS21E&quot;</span>) <span class="co"># FACTOR 3: clear rules</span></span>
+<span id="cb17-6"><a href="exploratory-factor-analysis-efa.html#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="exploratory-factor-analysis-efa.html#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># the number &quot;5&quot; will change: Use &quot;number of categories&quot; + 1 (e.g., 4 + 1)</span></span>
+<span id="cb17-8"><a href="exploratory-factor-analysis-efa.html#cb17-8" aria-hidden="true" tabindex="-1"></a>schl_safe[ ,cols] <span class="ot">&lt;-</span>  <span class="dv">5</span> <span class="sc">-</span> schl_safe[ ,cols] </span></code></pre></div>
+</div>
+<div id="exercise-5-check-correlations" class="section level2" number="4.6">
+<h2><span class="header-section-number">4.6</span> EXERCISE 5: CHECK CORRELATIONS</h2>
+<div id="check-correlations-to-see-if-coding-was-correct-all-blue-no-red" class="section level3" number="4.6.1">
+<h3><span class="header-section-number">4.6.1</span> check correlations to see if coding was correct (all blue, no red)</h3>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="exploratory-factor-analysis-efa.html#cb18-1" aria-hidden="true" tabindex="-1"></a>f1_cor <span class="ot">&lt;-</span> <span class="fu">cor</span>(schl_safe[<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>], <span class="at">use =</span> <span class="st">&quot;pairwise.complete.obs&quot;</span>)</span>
+<span id="cb18-2"><a href="exploratory-factor-analysis-efa.html#cb18-2" aria-hidden="true" tabindex="-1"></a>f2_cor <span class="ot">&lt;-</span> <span class="fu">cor</span>(schl_safe[<span class="dv">8</span><span class="sc">:</span><span class="dv">14</span>], <span class="at">use =</span> <span class="st">&quot;pairwise.complete.obs&quot;</span>)</span>
+<span id="cb18-3"><a href="exploratory-factor-analysis-efa.html#cb18-3" aria-hidden="true" tabindex="-1"></a>f3_cor <span class="ot">&lt;-</span> <span class="fu">cor</span>(schl_safe[<span class="dv">15</span><span class="sc">:</span><span class="dv">19</span>], <span class="at">use =</span> <span class="st">&quot;pairwise.complete.obs&quot;</span>)</span>
+<span id="cb18-4"><a href="exploratory-factor-analysis-efa.html#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="exploratory-factor-analysis-efa.html#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(f1_cor, <span class="at">method =</span> <span class="st">&quot;circle&quot;</span>, <span class="at">type =</span> <span class="st">&quot;upper&quot;</span>)</span>
+<span id="cb18-6"><a href="exploratory-factor-analysis-efa.html#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="exploratory-factor-analysis-efa.html#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(f2_cor, <span class="at">method =</span> <span class="st">&quot;circle&quot;</span>, <span class="at">type =</span> <span class="st">&quot;upper&quot;</span>)</span>
+<span id="cb18-8"><a href="exploratory-factor-analysis-efa.html#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="exploratory-factor-analysis-efa.html#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(f3_cor, <span class="at">method =</span> <span class="st">&quot;circle&quot;</span>, <span class="at">type =</span> <span class="st">&quot;upper&quot;</span>)</span>
+<span id="cb18-10"><a href="exploratory-factor-analysis-efa.html#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-11"><a href="exploratory-factor-analysis-efa.html#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Discovering patterns in large correlation matrices: The correlation matrix can</span></span>
+<span id="cb18-12"><a href="exploratory-factor-analysis-efa.html#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co"># be reordered according to the correlation coefficient.  This is useful for</span></span>
+<span id="cb18-13"><a href="exploratory-factor-analysis-efa.html#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="co"># identifying the hidden structure and pattern in the matrix.  “hclust” for</span></span>
+<span id="cb18-14"><a href="exploratory-factor-analysis-efa.html#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="co"># hierarchical clustering can be used...</span></span>
+<span id="cb18-15"><a href="exploratory-factor-analysis-efa.html#cb18-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-16"><a href="exploratory-factor-analysis-efa.html#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the argument: order=&#39;hclust&#39;</span></span></code></pre></div>
+</div>
+</div>
+<div id="exercise-6-prepare-datasets" class="section level2" number="4.7">
+<h2><span class="header-section-number">4.7</span> EXERCISE 6: PREPARE DATASETS</h2>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="exploratory-factor-analysis-efa.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="do">### prepare datasets, remove SPSS labeling</span></span>
+<span id="cb19-2"><a href="exploratory-factor-analysis-efa.html#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="exploratory-factor-analysis-efa.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># write a CSV datafile (preferable format for reading into R, without labels)</span></span>
+<span id="cb19-4"><a href="exploratory-factor-analysis-efa.html#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(schl_safe, <span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;els_fa_ready_sub2.csv&quot;</span>))</span>
+<span id="cb19-5"><a href="exploratory-factor-analysis-efa.html#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="exploratory-factor-analysis-efa.html#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co"># write a SPSS datafile (preferable format for reading into SPSS, labels are</span></span>
+<span id="cb19-7"><a href="exploratory-factor-analysis-efa.html#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># preserved)</span></span>
+<span id="cb19-8"><a href="exploratory-factor-analysis-efa.html#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="fu">write_sav</span>(schl_safe, <span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;els_fa_ready_sub2.sav&quot;</span>))</span>
+<span id="cb19-9"><a href="exploratory-factor-analysis-efa.html#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-10"><a href="exploratory-factor-analysis-efa.html#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="co"># read the unlabeled data back into R</span></span>
+<span id="cb19-11"><a href="exploratory-factor-analysis-efa.html#cb19-11" aria-hidden="true" tabindex="-1"></a>fa_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;els_fa_ready_sub2.csv&quot;</span>))</span>
+<span id="cb19-12"><a href="exploratory-factor-analysis-efa.html#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-13"><a href="exploratory-factor-analysis-efa.html#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="co"># write an Mplus DAT datafile</span></span>
+<span id="cb19-14"><a href="exploratory-factor-analysis-efa.html#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="fu">prepareMplusData</span>(fa_data, <span class="fu">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;els_fa_ready_sub2.dat&quot;</span>))</span></code></pre></div>
+<hr />
+</div>
+<div id="exercise-7-mplus-automation---get-descriptives" class="section level2" number="4.8">
+<h2><span class="header-section-number">4.8</span> EXERCISE 7: MPLUS AUTOMATION - GET DESCRIPTIVES</h2>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="exploratory-factor-analysis-efa.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="do">## TYPE = BASIC ANALYSIS (indicators: school climate, safety, clear rules )</span></span>
+<span id="cb20-2"><a href="exploratory-factor-analysis-efa.html#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="exploratory-factor-analysis-efa.html#cb20-3" aria-hidden="true" tabindex="-1"></a>m_basic  <span class="ot">&lt;-</span> <span class="fu">mplusObject</span>(</span>
+<span id="cb20-4"><a href="exploratory-factor-analysis-efa.html#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">TITLE =</span> <span class="st">&quot;RUN TYPE = BASIC ANALYSIS - LAB 2 DEMO&quot;</span>, </span>
+<span id="cb20-5"><a href="exploratory-factor-analysis-efa.html#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">VARIABLE =</span> </span>
+<span id="cb20-6"><a href="exploratory-factor-analysis-efa.html#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot; ! an mplusObject() will always need a &#39;usevar&#39; statement </span></span>
+<span id="cb20-7"><a href="exploratory-factor-analysis-efa.html#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="st">      ! ONLY specify variables to use in analysis</span></span>
+<span id="cb20-8"><a href="exploratory-factor-analysis-efa.html#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="st">      ! lines of code in MPLUS ALWAYS end with a semicolon &#39;;&#39;</span></span>
+<span id="cb20-9"><a href="exploratory-factor-analysis-efa.html#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="st">    usevar =</span></span>
+<span id="cb20-10"><a href="exploratory-factor-analysis-efa.html#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="st"> BYS20A BYS20B BYS20C BYS20D BYS20E BYS20F BYS20G</span></span>
+<span id="cb20-11"><a href="exploratory-factor-analysis-efa.html#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="st"> BYS20H BYS20I BYS20J BYS20K BYS20L BYS20M BYS20N</span></span>
+<span id="cb20-12"><a href="exploratory-factor-analysis-efa.html#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="st"> BYS21A BYS21B BYS21C BYS21D BYS21E;&quot;</span>,            </span>
+<span id="cb20-13"><a href="exploratory-factor-analysis-efa.html#cb20-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-14"><a href="exploratory-factor-analysis-efa.html#cb20-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">ANALYSIS =</span> </span>
+<span id="cb20-15"><a href="exploratory-factor-analysis-efa.html#cb20-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;type = basic&quot;</span> ,</span>
+<span id="cb20-16"><a href="exploratory-factor-analysis-efa.html#cb20-16" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-17"><a href="exploratory-factor-analysis-efa.html#cb20-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">MODEL =</span> <span class="st">&quot;&quot;</span> ,</span>
+<span id="cb20-18"><a href="exploratory-factor-analysis-efa.html#cb20-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-19"><a href="exploratory-factor-analysis-efa.html#cb20-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">PLOT =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb20-20"><a href="exploratory-factor-analysis-efa.html#cb20-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-21"><a href="exploratory-factor-analysis-efa.html#cb20-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">OUTPUT =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb20-22"><a href="exploratory-factor-analysis-efa.html#cb20-22" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-23"><a href="exploratory-factor-analysis-efa.html#cb20-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">usevariables =</span> <span class="fu">colnames</span>(fa_data),   <span class="co"># tell MplusAutomation the column names to use</span></span>
+<span id="cb20-24"><a href="exploratory-factor-analysis-efa.html#cb20-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">rdata =</span> fa_data)                    <span class="co"># this is the data object used (must be un-label)</span></span>
+<span id="cb20-25"><a href="exploratory-factor-analysis-efa.html#cb20-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-26"><a href="exploratory-factor-analysis-efa.html#cb20-26" aria-hidden="true" tabindex="-1"></a>m_basic_fit <span class="ot">&lt;-</span> <span class="fu">mplusModeler</span>(m_basic, </span>
+<span id="cb20-27"><a href="exploratory-factor-analysis-efa.html#cb20-27" aria-hidden="true" tabindex="-1"></a>                    <span class="at">dataout=</span><span class="fu">here</span>(<span class="st">&quot;efa_mplus&quot;</span>, <span class="st">&quot;basic_Lab2_DEMO.dat&quot;</span>),</span>
+<span id="cb20-28"><a href="exploratory-factor-analysis-efa.html#cb20-28" aria-hidden="true" tabindex="-1"></a>                    <span class="at">modelout=</span><span class="fu">here</span>(<span class="st">&quot;efa_mplus&quot;</span>, <span class="st">&quot;basic_Lab2_DEMO.inp&quot;</span>),</span>
+<span id="cb20-29"><a href="exploratory-factor-analysis-efa.html#cb20-29" aria-hidden="true" tabindex="-1"></a>                    <span class="at">check=</span><span class="cn">TRUE</span>, <span class="at">run =</span> <span class="cn">TRUE</span>, <span class="at">hashfilename =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb20-30"><a href="exploratory-factor-analysis-efa.html#cb20-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-31"><a href="exploratory-factor-analysis-efa.html#cb20-31" aria-hidden="true" tabindex="-1"></a><span class="do">## </span><span class="re">END</span><span class="do">: TYPE = BASIC ANALYSIS </span></span></code></pre></div>
+<hr />
+</div>
+<div id="exercise-8-exploratory-factor-analysis-efa" class="section level2" number="4.9">
+<h2><span class="header-section-number">4.9</span> EXERCISE 8: EXPLORATORY FACTOR ANALYSIS (EFA)</h2>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="exploratory-factor-analysis-efa.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EXPLORATORY FACTOR ANALYSIS: (indicators: school climate, safety, clear rules)</span></span>
+<span id="cb21-2"><a href="exploratory-factor-analysis-efa.html#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="exploratory-factor-analysis-efa.html#cb21-3" aria-hidden="true" tabindex="-1"></a>m_efa_1  <span class="ot">&lt;-</span> <span class="fu">mplusObject</span>(</span>
+<span id="cb21-4"><a href="exploratory-factor-analysis-efa.html#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">TITLE =</span> <span class="st">&quot;FACTOR ANALYSIS EFA - LAB 2 DEMO&quot;</span>, </span>
+<span id="cb21-5"><a href="exploratory-factor-analysis-efa.html#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">VARIABLE =</span> </span>
+<span id="cb21-6"><a href="exploratory-factor-analysis-efa.html#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;usevar =</span></span>
+<span id="cb21-7"><a href="exploratory-factor-analysis-efa.html#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="st"> BYS20A BYS20B BYS20C BYS20D BYS20E BYS20F BYS20G</span></span>
+<span id="cb21-8"><a href="exploratory-factor-analysis-efa.html#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="st"> BYS20H BYS20I BYS20J BYS20K BYS20L BYS20M BYS20N</span></span>
+<span id="cb21-9"><a href="exploratory-factor-analysis-efa.html#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="st"> BYS21A BYS21B BYS21C BYS21D BYS21E;&quot;</span>,</span>
+<span id="cb21-10"><a href="exploratory-factor-analysis-efa.html#cb21-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-11"><a href="exploratory-factor-analysis-efa.html#cb21-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">ANALYSIS =</span> </span>
+<span id="cb21-12"><a href="exploratory-factor-analysis-efa.html#cb21-12" aria-hidden="true" tabindex="-1"></a> <span class="st">&quot;type = efa 1 5;   ! run efa of 1 through 5 factor models</span></span>
+<span id="cb21-13"><a href="exploratory-factor-analysis-efa.html#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="st">  estimator = MLR;  ! using the ROBUST ML Estimator</span></span>
+<span id="cb21-14"><a href="exploratory-factor-analysis-efa.html#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="st">  parallel=50;      ! run the parallel analysis for viewing in elbow plotå</span></span>
+<span id="cb21-15"><a href="exploratory-factor-analysis-efa.html#cb21-15" aria-hidden="true" tabindex="-1"></a><span class="st">  &quot;</span>,</span>
+<span id="cb21-16"><a href="exploratory-factor-analysis-efa.html#cb21-16" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb21-17"><a href="exploratory-factor-analysis-efa.html#cb21-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">MODEL =</span> <span class="st">&quot;&quot;</span> ,</span>
+<span id="cb21-18"><a href="exploratory-factor-analysis-efa.html#cb21-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-19"><a href="exploratory-factor-analysis-efa.html#cb21-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">PLOT =</span> <span class="st">&quot;type = plot3;&quot;</span>,</span>
+<span id="cb21-20"><a href="exploratory-factor-analysis-efa.html#cb21-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">OUTPUT =</span> <span class="st">&quot;sampstat standardized residual modindices (3.84);&quot;</span>,</span>
+<span id="cb21-21"><a href="exploratory-factor-analysis-efa.html#cb21-21" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-22"><a href="exploratory-factor-analysis-efa.html#cb21-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">usevariables =</span> <span class="fu">colnames</span>(fa_data), </span>
+<span id="cb21-23"><a href="exploratory-factor-analysis-efa.html#cb21-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">rdata =</span> fa_data)</span>
+<span id="cb21-24"><a href="exploratory-factor-analysis-efa.html#cb21-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-25"><a href="exploratory-factor-analysis-efa.html#cb21-25" aria-hidden="true" tabindex="-1"></a>m_efa_1_fit <span class="ot">&lt;-</span> <span class="fu">mplusModeler</span>(m_efa_1, </span>
+<span id="cb21-26"><a href="exploratory-factor-analysis-efa.html#cb21-26" aria-hidden="true" tabindex="-1"></a>                            <span class="at">dataout=</span><span class="fu">here</span>(<span class="st">&quot;efa_mplus&quot;</span>, <span class="st">&quot;EFA1_Lab2_DEMO.dat&quot;</span>),</span>
+<span id="cb21-27"><a href="exploratory-factor-analysis-efa.html#cb21-27" aria-hidden="true" tabindex="-1"></a>                            <span class="at">modelout=</span><span class="fu">here</span>(<span class="st">&quot;efa_mplus&quot;</span>, <span class="st">&quot;EFA1_Lab2_DEMO.inp&quot;</span>),</span>
+<span id="cb21-28"><a href="exploratory-factor-analysis-efa.html#cb21-28" aria-hidden="true" tabindex="-1"></a>                            <span class="at">check=</span><span class="cn">TRUE</span>, <span class="at">run =</span> <span class="cn">TRUE</span>, <span class="at">hashfilename =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb21-29"><a href="exploratory-factor-analysis-efa.html#cb21-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-30"><a href="exploratory-factor-analysis-efa.html#cb21-30" aria-hidden="true" tabindex="-1"></a><span class="do">## </span><span class="re">END</span><span class="do">: EXPLORATORY FACTOR ANALYSIS</span></span></code></pre></div>
+<hr />
+<div id="exercise-9-efa-reduced-indicator-set" class="section level3" number="4.9.1">
+<h3><span class="header-section-number">4.9.1</span> EXERCISE 9: EFA REDUCED INDICATOR SET</h3>
+</div>
+<div id="removed-items-loadings-.5-andor-cross-loadings" class="section level3" number="4.9.2">
+<h3><span class="header-section-number">4.9.2</span> Removed items: (loadings &lt;.5 and/or cross-loadings)</h3>
+<div id="how-to-make-a-tribble-table" class="section level4" number="4.9.2.1">
+<h4><span class="header-section-number">4.9.2.1</span> How to make a tribble table?</h4>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="exploratory-factor-analysis-efa.html#cb22-1" aria-hidden="true" tabindex="-1"></a>lab_tools <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb22-2"><a href="exploratory-factor-analysis-efa.html#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span><span class="st">&quot;Items&quot;</span>, <span class="sc">~</span><span class="st">&quot;Factor 1&quot;</span>, <span class="sc">~</span><span class="st">&quot;Factor 2&quot;</span>,  <span class="sc">~</span><span class="st">&quot;Factor 3&quot;</span>,</span>
+<span id="cb22-3"><a href="exploratory-factor-analysis-efa.html#cb22-3" aria-hidden="true" tabindex="-1"></a> <span class="co">#----------|-------------|------------|-----------|,</span></span>
+<span id="cb22-4"><a href="exploratory-factor-analysis-efa.html#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;BYS20C&quot;</span>  ,  <span class="st">&quot; 0.149 &quot;</span>  ,  <span class="st">&quot;0.168*&quot;</span>  ,  <span class="st">&quot;0.120 &quot;</span>  ,   </span>
+<span id="cb22-5"><a href="exploratory-factor-analysis-efa.html#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;BYS20D&quot;</span>  ,  <span class="st">&quot; 0.075 &quot;</span>  ,  <span class="st">&quot;0.338*&quot;</span>  ,  <span class="st">&quot;0.082 &quot;</span>  ,    </span>
+<span id="cb22-6"><a href="exploratory-factor-analysis-efa.html#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;BYS20H&quot;</span>  ,  <span class="st">&quot; 0.345*&quot;</span>  ,  <span class="st">&quot;0.307*&quot;</span>  ,  <span class="st">&quot;0.061 &quot;</span>  ,    </span>
+<span id="cb22-7"><a href="exploratory-factor-analysis-efa.html#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;BYS20I&quot;</span>  ,  <span class="st">&quot;-0.032 &quot;</span>  ,  <span class="st">&quot;0.386*&quot;</span>  ,  <span class="st">&quot;0.167 &quot;</span>  ,    </span>
+<span id="cb22-8"><a href="exploratory-factor-analysis-efa.html#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;BYS20L&quot;</span>  ,  <span class="st">&quot; 0.004 &quot;</span>  ,  <span class="st">&quot;0.400*&quot;</span>  ,  <span class="st">&quot;0.377*&quot;</span>  ,    </span>
+<span id="cb22-9"><a href="exploratory-factor-analysis-efa.html#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;BYS21B&quot;</span>  ,  <span class="st">&quot; 0.418*&quot;</span>  ,  <span class="st">&quot;0.024 &quot;</span>  ,  <span class="st">&quot;0.187*&quot;</span>  ,</span>
+<span id="cb22-10"><a href="exploratory-factor-analysis-efa.html#cb22-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb22-11"><a href="exploratory-factor-analysis-efa.html#cb22-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-12"><a href="exploratory-factor-analysis-efa.html#cb22-12" aria-hidden="true" tabindex="-1"></a>lab_tools <span class="sc">%&gt;%</span> </span>
+<span id="cb22-13"><a href="exploratory-factor-analysis-efa.html#cb22-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">booktabs =</span> T, <span class="at">linesep =</span> <span class="st">&quot;&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-14"><a href="exploratory-factor-analysis-efa.html#cb22-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">latex_options =</span> <span class="fu">c</span>(<span class="st">&quot;striped&quot;</span>), </span>
+<span id="cb22-15"><a href="exploratory-factor-analysis-efa.html#cb22-15" aria-hidden="true" tabindex="-1"></a>                <span class="at">full_width =</span> F,</span>
+<span id="cb22-16"><a href="exploratory-factor-analysis-efa.html#cb22-16" aria-hidden="true" tabindex="-1"></a>                <span class="at">position =</span> <span class="st">&quot;left&quot;</span>)</span></code></pre></div>
+<table class="table" style="width: auto !important; ">
+<thead>
+<tr>
+<th style="text-align:left;">
+Items
+</th>
+<th style="text-align:left;">
+Factor 1
+</th>
+<th style="text-align:left;">
+Factor 2
+</th>
+<th style="text-align:left;">
+Factor 3
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+BYS20C
+</td>
+<td style="text-align:left;">
+0.149
+</td>
+<td style="text-align:left;">
+0.168*
+</td>
+<td style="text-align:left;">
+0.120
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BYS20D
+</td>
+<td style="text-align:left;">
+0.075
+</td>
+<td style="text-align:left;">
+0.338*
+</td>
+<td style="text-align:left;">
+0.082
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BYS20H
+</td>
+<td style="text-align:left;">
+0.345*
+</td>
+<td style="text-align:left;">
+0.307*
+</td>
+<td style="text-align:left;">
+0.061
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BYS20I
+</td>
+<td style="text-align:left;">
+-0.032
+</td>
+<td style="text-align:left;">
+0.386*
+</td>
+<td style="text-align:left;">
+0.167
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BYS20L
+</td>
+<td style="text-align:left;">
+0.004
+</td>
+<td style="text-align:left;">
+0.400*
+</td>
+<td style="text-align:left;">
+0.377*
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BYS21B
+</td>
+<td style="text-align:left;">
+0.418*
+</td>
+<td style="text-align:left;">
+0.024
+</td>
+<td style="text-align:left;">
+0.187*
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="exploratory-factor-analysis-efa.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="do">## EXPLORATORY FACTOR ANALYSIS - REDUCED SET</span></span>
+<span id="cb23-2"><a href="exploratory-factor-analysis-efa.html#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="exploratory-factor-analysis-efa.html#cb23-3" aria-hidden="true" tabindex="-1"></a>m.step1  <span class="ot">&lt;-</span> <span class="fu">mplusObject</span>(</span>
+<span id="cb23-4"><a href="exploratory-factor-analysis-efa.html#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">TITLE =</span> <span class="st">&quot;FACTOR ANALYSIS EFA - REDUCED SET - LAB 2 DEMO&quot;</span>, </span>
+<span id="cb23-5"><a href="exploratory-factor-analysis-efa.html#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">VARIABLE =</span> </span>
+<span id="cb23-6"><a href="exploratory-factor-analysis-efa.html#cb23-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;usevar =</span></span>
+<span id="cb23-7"><a href="exploratory-factor-analysis-efa.html#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="st">     BYS20A BYS20B BYS20E BYS20F BYS20G </span></span>
+<span id="cb23-8"><a href="exploratory-factor-analysis-efa.html#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="st">     ! removed: BYS20C BYS20D</span></span>
+<span id="cb23-9"><a href="exploratory-factor-analysis-efa.html#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="st">     BYS20J BYS20K BYS20M BYS20N</span></span>
+<span id="cb23-10"><a href="exploratory-factor-analysis-efa.html#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="st">     ! removed:BYS20H BYS20I BYS20L</span></span>
+<span id="cb23-11"><a href="exploratory-factor-analysis-efa.html#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="st">     BYS21A BYS21C BYS21D BYS21E</span></span>
+<span id="cb23-12"><a href="exploratory-factor-analysis-efa.html#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="st">     ! removed: BYS21B </span></span>
+<span id="cb23-13"><a href="exploratory-factor-analysis-efa.html#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="st">     ;&quot;</span>,</span>
+<span id="cb23-14"><a href="exploratory-factor-analysis-efa.html#cb23-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-15"><a href="exploratory-factor-analysis-efa.html#cb23-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">ANALYSIS =</span> </span>
+<span id="cb23-16"><a href="exploratory-factor-analysis-efa.html#cb23-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;type = efa 1 5;    ! run efa of 1 through 5 factor models</span></span>
+<span id="cb23-17"><a href="exploratory-factor-analysis-efa.html#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="st">     estimator = MLR;   ! using the ROBUST ML Estimator</span></span>
+<span id="cb23-18"><a href="exploratory-factor-analysis-efa.html#cb23-18" aria-hidden="true" tabindex="-1"></a><span class="st">     parallel=50;       ! run the parallel analysis for viewing in elbow plot</span></span>
+<span id="cb23-19"><a href="exploratory-factor-analysis-efa.html#cb23-19" aria-hidden="true" tabindex="-1"></a><span class="st">    &quot;</span>,</span>
+<span id="cb23-20"><a href="exploratory-factor-analysis-efa.html#cb23-20" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-21"><a href="exploratory-factor-analysis-efa.html#cb23-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">MODEL =</span> <span class="st">&quot;&quot;</span> ,</span>
+<span id="cb23-22"><a href="exploratory-factor-analysis-efa.html#cb23-22" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-23"><a href="exploratory-factor-analysis-efa.html#cb23-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">PLOT =</span> <span class="st">&quot;type = plot3;&quot;</span>,</span>
+<span id="cb23-24"><a href="exploratory-factor-analysis-efa.html#cb23-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">OUTPUT =</span> <span class="st">&quot;sampstat standardized residual modindices (3.84);&quot;</span>,</span>
+<span id="cb23-25"><a href="exploratory-factor-analysis-efa.html#cb23-25" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb23-26"><a href="exploratory-factor-analysis-efa.html#cb23-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">usevariables =</span> <span class="fu">colnames</span>(fa_data), </span>
+<span id="cb23-27"><a href="exploratory-factor-analysis-efa.html#cb23-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">rdata =</span> fa_data)</span>
+<span id="cb23-28"><a href="exploratory-factor-analysis-efa.html#cb23-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-29"><a href="exploratory-factor-analysis-efa.html#cb23-29" aria-hidden="true" tabindex="-1"></a>m.step1.fit <span class="ot">&lt;-</span> <span class="fu">mplusModeler</span>(m.step1, </span>
+<span id="cb23-30"><a href="exploratory-factor-analysis-efa.html#cb23-30" aria-hidden="true" tabindex="-1"></a>                            <span class="at">dataout=</span><span class="fu">here</span>(<span class="st">&quot;efa_mplus&quot;</span>, <span class="st">&quot;EFA2_Lab1_DEMO.dat&quot;</span>),</span>
+<span id="cb23-31"><a href="exploratory-factor-analysis-efa.html#cb23-31" aria-hidden="true" tabindex="-1"></a>                            <span class="at">modelout=</span><span class="fu">here</span>(<span class="st">&quot;efa_mplus&quot;</span>, <span class="st">&quot;EFA2_Lab1_DEMO.inp&quot;</span>),</span>
+<span id="cb23-32"><a href="exploratory-factor-analysis-efa.html#cb23-32" aria-hidden="true" tabindex="-1"></a>                            <span class="at">check=</span><span class="cn">TRUE</span>, <span class="at">run =</span> <span class="cn">TRUE</span>, <span class="at">hashfilename =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb23-33"><a href="exploratory-factor-analysis-efa.html#cb23-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-34"><a href="exploratory-factor-analysis-efa.html#cb23-34" aria-hidden="true" tabindex="-1"></a><span class="do">## </span><span class="re">END</span><span class="do">: EXPLORATORY FACTOR ANALYSIS OF - REDUCED SET</span></span></code></pre></div>
+<hr />
+</div>
+</div>
+</div>
+<div id="references" class="section level2" number="4.10">
+<h2><span class="header-section-number">4.10</span> References</h2>
+<p>Hallquist, M. N., &amp; Wiley, J. F. (2018). MplusAutomation: An R Package for Facilitating Large-Scale Latent Variable Analyses in Mplus. Structural equation modeling: a multidisciplinary journal, 25(4), 621-638.</p>
+<p>Horst, A. (2020). Course &amp; Workshop Materials. GitHub Repositories, <a href="https://https://allisonhorst.github.io/" class="uri">https://https://allisonhorst.github.io/</a></p>
+<p>Muthén, L.K. and Muthén, B.O. (1998-2017). Mplus User’s Guide. Eighth Edition. Los Angeles, CA: Muthén &amp; Muthén</p>
+<p>R Core Team (2017). R: A language and environment for statistical computing. R Foundation for Statistical Computing, Vienna, Austria. URL <a href="http://www.R-project.org/" class="uri">http://www.R-project.org/</a></p>
+<p>Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686, <a href="https://doi.org/10.21105/joss.01686" class="uri">https://doi.org/10.21105/joss.01686</a></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="run-a-simple-model-with-mplusautomation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="splits-iterators.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["tidy-mplus-auto-book.pdf", "tidy-mplus-auto-book.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

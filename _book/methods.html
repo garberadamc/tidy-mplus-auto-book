@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Methods | Tidy Workflow with MplusAutomation</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.22.2 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Methods | Tidy Workflow with MplusAutomation" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Methods | Tidy Workflow with MplusAutomation" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Adam Garber" />
+
+
+<meta name="date" content="2021-05-17" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="run-a-simple-model-with-mplusautomation.html"/>
+<link rel="next" href="applications.html"/>
+<script src="libs/header-attrs-2.8.1/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Tidy Workflow with MplusAutomation</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#guidlines"><i class="fa fa-check"></i><b>2.1</b> Guidlines</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#preparing-to-work-with-mplusautomation"><i class="fa fa-check"></i><b>2.2</b> Preparing to work with MplusAutomation</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#tools-we-will-use-in-lab"><i class="fa fa-check"></i><b>2.3</b> Tools we will use in lab</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#creating-an-r-project"><i class="fa fa-check"></i><b>2.4</b> Creating an R-Project</a></li>
+<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#install-the-rhdf5-package-to-read-gh5-files"><i class="fa fa-check"></i><b>2.5</b> install the “rhdf5” package to read gh5 files</a></li>
+<li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#load-packages"><i class="fa fa-check"></i><b>2.6</b> load packages</a></li>
+<li class="chapter" data-level="2.7" data-path="intro.html"><a href="intro.html#keyboard-shortcuts"><i class="fa fa-check"></i><b>2.7</b> Keyboard shortcuts</a></li>
+<li class="chapter" data-level="2.8" data-path="intro.html"><a href="intro.html#read-in-data"><i class="fa fa-check"></i><b>2.8</b> Read in data</a></li>
+<li class="chapter" data-level="2.9" data-path="intro.html"><a href="intro.html#view-dataframe-with-labels-response-scale-meta-data"><i class="fa fa-check"></i><b>2.9</b> View dataframe with labels &amp; response scale meta-data</a></li>
+<li class="chapter" data-level="2.10" data-path="intro.html"><a href="intro.html#types-of-data-for-different-tasks"><i class="fa fa-check"></i><b>2.10</b> Types of data for different tasks</a></li>
+<li class="chapter" data-level="2.11" data-path="intro.html"><a href="intro.html#writing-reading-and-converting-data-between-3-formats"><i class="fa fa-check"></i><b>2.11</b> Writing, reading, and converting data between 3 formats</a></li>
+<li class="chapter" data-level="2.12" data-path="intro.html"><a href="intro.html#preparing-column-names-to-be-mplusautomation-ready"><i class="fa fa-check"></i><b>2.12</b> Preparing column-names to be <code>MplusAutomation</code> ready</a></li>
+<li class="chapter" data-level="2.13" data-path="intro.html"><a href="intro.html#renaming-columns-manually"><i class="fa fa-check"></i><b>2.13</b> Renaming columns manually…</a></li>
+<li class="chapter" data-level="2.14" data-path="intro.html"><a href="intro.html#what-do-you-do-if-you-have-a-large-dataset-with-many-column-names-that-are-8-characters"><i class="fa fa-check"></i><b>2.14</b> What do you do if you have a large dataset with many column names that are &gt; 8 characters?</a></li>
+<li class="chapter" data-level="2.15" data-path="intro.html"><a href="intro.html#a-note-on-coding-style"><i class="fa fa-check"></i><b>2.15</b> A note on coding style:</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="run-a-simple-model-with-mplusautomation.html"><a href="run-a-simple-model-with-mplusautomation.html"><i class="fa fa-check"></i><b>3</b> Run a Simple Model with <code>MplusAutomation</code></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="run-a-simple-model-with-mplusautomation.html"><a href="run-a-simple-model-with-mplusautomation.html#a-minimal-example-of-writing-running-reading-models"><i class="fa fa-check"></i><b>3.1</b> A minimal example of writing, running, &amp; reading models</a></li>
+<li class="chapter" data-level="3.2" data-path="run-a-simple-model-with-mplusautomation.html"><a href="run-a-simple-model-with-mplusautomation.html#practice-using-mplusobject-method-type-basic"><i class="fa fa-check"></i><b>3.2</b> PRACTICE: Using MplusObject() method (<code>type = BASIC;</code>)</a></li>
+<li class="chapter" data-level="3.3" data-path="run-a-simple-model-with-mplusautomation.html"><a href="run-a-simple-model-with-mplusautomation.html#practice-subsetting-now-explore-descriptives-for-observations-that-reported-as-female"><i class="fa fa-check"></i><b>3.3</b> PRACTICE SUBSETTING: Now explore descriptives for observations that reported as “female”</a></li>
+<li class="chapter" data-level="3.4" data-path="run-a-simple-model-with-mplusautomation.html"><a href="run-a-simple-model-with-mplusautomation.html#practice-exploratory-factor-analysis-efa"><i class="fa fa-check"></i><b>3.4</b> PRACTICE: Exploratory Factor Analysis (EFA)</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a></li>
+<li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
+<li class="chapter" data-level="5.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Tidy Workflow with MplusAutomation</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="methods" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Methods</h1>
+<p>We describe our methods in this chapter.</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="run-a-simple-model-with-mplusautomation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="applications.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["tidy-mplus-auto-book.pdf", "tidy-mplus-auto-book.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
